@@ -17,7 +17,7 @@ public class ProductSaveProxyService {
     private final ProductDtoMapper productDtoMapper;
 
     public ProductSaveResponseDto saveProduct(ProductSaveRequestDto dto){
-        Product product = productDtoMapper.from(dto, ProductStatus.RESERVED);
+        Product product = productDtoMapper.from(dto, ProductStatus.FOR_SALE);
         saveProductUseCase.saveProduct(product);
 
         return ProductSaveResponseDto.builder()
