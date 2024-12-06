@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,13 +32,13 @@ public final class ProductCommandApi {
     }
 
     @DeleteMapping("{productId}")
-    public ProductDeleteResponseDto deleteProduct(@PathVariable UUID productId) {
+    public ProductDeleteResponseDto deleteProduct(@PathVariable Long productId) {
         return productDeleteProxyService.productDelete(productId);
     }
 
     @PutMapping("{productId}/status")
     public ProductStatusUpdateResponseDto updateProductStatus(
-            @PathVariable UUID productId,
+            @PathVariable Long productId,
             @RequestBody @Valid ProductUpdateDto.ProductStatusUpdateRequestDto body
     ) {
         return productStatusUpdateProxyService.productStatusUpdate(productId, body.status());

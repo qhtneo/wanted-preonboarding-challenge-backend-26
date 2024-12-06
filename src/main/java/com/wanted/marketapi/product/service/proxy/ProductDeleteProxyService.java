@@ -6,14 +6,12 @@ import com.wanted.marketapi.product.usecase.DeleteProductUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @RequiredArgsConstructor
 public class ProductDeleteProxyService {
     private final DeleteProductUseCase deleteProductUseCase;
 
-    public ProductDeleteResponseDto productDelete(UUID productId) {
+    public ProductDeleteResponseDto productDelete(Long productId) {
         boolean result = deleteProductUseCase.deleteProduct(productId);
         return ProductDeleteResponseDto.builder()
                 .success(result)

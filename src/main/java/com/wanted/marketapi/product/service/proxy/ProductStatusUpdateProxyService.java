@@ -6,14 +6,13 @@ import com.wanted.marketapi.product.usecase.UpdateProductStatusUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class ProductStatusUpdateProxyService {
     private final UpdateProductStatusUseCase updateProductStatusUseCase;
 
-    public ProductStatusUpdateResponseDto productStatusUpdate(UUID productId, ProductStatus status) {
+    public ProductStatusUpdateResponseDto productStatusUpdate(Long productId, ProductStatus status) {
         boolean result = updateProductStatusUseCase.updateProductStatus(productId, status);
         return ProductStatusUpdateResponseDto.builder()
                 .success(result)

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +19,7 @@ public class ProductQueryApi {
     private final ProductReadProxyService productReadProxyService;
 
     @GetMapping("/{productId}")
-    public Product findById(@PathVariable("productId") UUID productId) {
+    public Product findById(@PathVariable("productId") Long productId) {
         return productReadProxyService.findByID(productId);
     }
 

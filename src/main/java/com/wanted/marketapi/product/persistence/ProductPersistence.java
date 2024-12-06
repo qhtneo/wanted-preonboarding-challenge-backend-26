@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 
 @Repository
@@ -30,7 +29,7 @@ public class ProductPersistence implements ProductRepository {
     }
 
     @Override
-    public Optional<Product> findById(UUID id) {
+    public Optional<Product> findById(Long id) {
         Optional<ProductEntity> productEntity = productJpaRepository.findById(id);
         return productEntity.map(mapper::toDomain);
     }
@@ -45,7 +44,7 @@ public class ProductPersistence implements ProductRepository {
     }
 
     @Override
-    public boolean deleteProduct(UUID productId) {
+    public boolean deleteProduct(Long productId) {
         boolean isProduct = productJpaRepository.existsById(productId);
         if(!isProduct) {
             return false;
@@ -55,7 +54,7 @@ public class ProductPersistence implements ProductRepository {
     }
 
     @Override
-    public boolean updateProductStatus(UUID productId, ProductStatus status) {
+    public boolean updateProductStatus(Long productId, ProductStatus status) {
         ProductEntity product = productJpaRepository.findById(productId)
                 .orElseThrow(ProductErrorCode.PRODUCT_NOT_FOUND::defaultException);
         product.status = status;

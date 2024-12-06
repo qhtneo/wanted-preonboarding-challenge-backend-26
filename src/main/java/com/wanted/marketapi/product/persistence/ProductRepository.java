@@ -6,17 +6,16 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface ProductRepository {
      Product save(Product product);
 
-     Optional<Product> findById(UUID id);
+     Optional<Product> findById(Long id);
 
 
      List<Product> findAll(Pageable pageable);
 
-     boolean deleteProduct(UUID productId);
+     boolean deleteProduct(Long productId);
 
-     boolean updateProductStatus(UUID productId, ProductStatus status);
+     boolean updateProductStatus(Long productId, ProductStatus status);
 }

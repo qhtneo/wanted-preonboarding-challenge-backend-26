@@ -14,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +30,7 @@ public class ProductService implements
         return productRepository.findAll(pageable);
     }
     @Override
-    public Product findById(UUID id) {
+    public Product findById(Long id) {
         return productRepository.findById(id)
                 .orElseThrow(ProductErrorCode.PRODUCT_NOT_FOUND::defaultException);
     }
@@ -40,12 +39,12 @@ public class ProductService implements
         return productRepository.save(product);
     }
     @Override
-    public boolean deleteProduct(UUID productId) {
+    public boolean deleteProduct(Long productId) {
         return productRepository.deleteProduct(productId);
     }
 
     @Override
-    public boolean updateProductStatus(UUID productId, ProductStatus status) {
+    public boolean updateProductStatus(Long productId, ProductStatus status) {
         return productRepository.updateProductStatus(productId,status);
     }
 }

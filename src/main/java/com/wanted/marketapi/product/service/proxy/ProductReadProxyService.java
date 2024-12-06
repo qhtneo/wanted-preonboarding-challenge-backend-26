@@ -7,14 +7,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
 public class ProductReadProxyService {
     private final ReadProductUseCase readProductUseCase;
 
-    public Product findByID(UUID productId) {
+    public Product findByID(Long productId) {
         return readProductUseCase.findById(productId);
     }
     public List<Product> findALL(Pageable pageable){
